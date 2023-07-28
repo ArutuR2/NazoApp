@@ -1,11 +1,12 @@
 <h1>Q1</h1>
 
-<% if Log.find_by(content: "correct")%>
+<% if Log.find_by(content: @nickname)%>
     <p>解答済みです</p>
-<% else%>
+<% else %>
     <%= form_tag("/home/confirm/#{@nickname}") do %>
         <input name="selfanswer"  placeholder="答えを入力" autocomplete="off">
-        <input type="submit" value="解答">
+        <input type="submit" value="解答" onclick="App.answer.answer()">
     <% end %>
 <% end %>
 
+<h3><%="#{@solved}"%></h3>

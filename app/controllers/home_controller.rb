@@ -25,7 +25,7 @@ class HomeController < ApplicationController
     if @selfanswer == "こたえ"
       @flag = Log.new(content: @nickname)
       @flag.save
-      redirect_to("/home/q2")
+      redirect_to("/home/q2/" + @nickname)
     else
     end
   end
