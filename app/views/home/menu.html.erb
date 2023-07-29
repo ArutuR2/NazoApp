@@ -1,0 +1,25 @@
+<h1>問題一覧</h1>
+
+<div>
+    <% @int = 1%>
+    <% while @int <16 %>
+        <a href="/home/<%="#{@int}"%>/<%="#{@nickname}"%>" class="question_btn">
+            <%="#{@int}"%>
+        </a>
+
+<% 
+=begin
+%>
+        <% if @point_checker[@int-1] == 1%>
+            <img src="/CLEAR!.png" class="clear_band">
+        <% end %></a>
+<% 
+=end
+%>
+
+        <% if @int % 5 == 0%>
+            <br>
+        <% end %>
+        <% @int += 1 %>
+    <% end %>
+</div>
