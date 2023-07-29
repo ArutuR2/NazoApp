@@ -25,6 +25,7 @@ class HomeController < ApplicationController
     if @selfanswer == "こたえ"
       @flag = Log.new(content: @nickname)
       @flag.save
+      ActionCable.server.broadcast "answer_channel", message: "fuga"
       redirect_to("/home/q2/" + @nickname)
     else
     end

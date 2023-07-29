@@ -5,8 +5,8 @@
 <% else %>
     <%= form_tag("/home/confirm/#{@nickname}") do %>
         <input name="selfanswer"  placeholder="答えを入力" autocomplete="off">
-        <input type="submit" value="解答" onclick="App.answer.answer()">
+        <input type="submit" value="解答" class="btn-1">
     <% end %>
 <% end %>
 
-<h3><%="#{@solved}"%></h3>
+<div class="status">いまなら3点</div>
