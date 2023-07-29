@@ -11,4 +11,7 @@ App.answer = App.cable.subscriptions.create "AnswerChannel",
 
   answer: ->
     @perform 'answer'
-    
+
+$ ->
+  $(window).click (e)->
+    App.answer.answer()
