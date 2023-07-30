@@ -19,6 +19,15 @@ class HomeController < ApplicationController
     @nickname = params[:nickname]
   end
 
+  def menu
+    @nickname = params[:nickname]
+  end
+
+  def question
+    @qNum = params[:qNum]
+    @nickname = params[:nickname]
+  end
+
   def confirm
     @nickname = params[:nickname]
     @selfanswer = params[:selfanswer]
