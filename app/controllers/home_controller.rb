@@ -5,7 +5,6 @@ class HomeController < ApplicationController
 
   def q1
     @nickname = params[:nickname]
-
   end
 
   def q2
@@ -29,13 +28,33 @@ class HomeController < ApplicationController
   end
 
   def confirm
+    @qNum = params[:qNum]
     @nickname = params[:nickname]
     @selfanswer = params[:selfanswer]
-    if @selfanswer == "こたえ"
+
+    @answersQueue = [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5",
+      "6",
+      "7",
+      "8",
+      "9",
+      "10",
+      "11",
+      "12",
+      "13",
+      "14",
+      "15",
+      "16",]
+
+    if @selfanswer == @answersQueue[@qNum.to_i-1]
       @flag = Log.new(content: @nickname)
       @flag.save
-      ActionCable.server.broadcast "answer_channel", message: "fuga"
-      redirect_to("/home/q2/" + @nickname)
+      ActionCable.server.broadcast "answer_channel", message: @nickname+ "がQ" + @qNum + "を正解しました"
+      redirect_to("/home/menu/" + @nickname)
     else
     end
   end

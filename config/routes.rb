@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "home/q1/:nickname" => "home#q1"
   get "home/q2/:nickname" => "home#q2"
   get "home/log" => "home#log"
+  post "home/confirm/:qNum/:nickname" => "home#confirm"
   post "home/confirm/:nickname" => "home#confirm"
   post "home/reset" => "home#reset"
   post "home/nickname" => "home#nickname"

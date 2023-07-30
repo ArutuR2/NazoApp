@@ -14,6 +14,11 @@ App.answer = App.cable.subscriptions.create "AnswerChannel",
     $('.status').html("いまこの問題に正解すると"+point+"点獲得")
     $('.status').html(data.message)
 
+    $('.solveLog').html(data.message)
+    $('.solveLogBox').append('<p>' + data.message + '</p>');
+
+    
+
   answer: ->
     @perform 'answer'
 
