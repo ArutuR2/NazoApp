@@ -1,0 +1,32 @@
+<h1>問題</h1>
+
+<div class="Q">
+    <img src=<%="/Q/Q#{@qNum}.png"%> width=400px height=400px>
+
+    <div class="LOCK-grid">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK1">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK2">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK3">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK4">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK5">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK6">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK7">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK8">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK9">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK10">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK11">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK12">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK13">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK14">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK15">
+        <img src=<%="/Resources/LOCK.png"%> width=100px height=100px id="LOCK16">
+    </div>
+</div>
+
+<%= form_tag("/home/confirm/#{@qNum}/#{@nickname}") do %>
+    <input name="selfanswer"  placeholder="答えを入力" autocomplete="off">
+    <input type="submit" value="解答" class="btn">
+<% end %>
+
+<div class="solveLog"></div>
+<div class="solveLogBox"></div>
