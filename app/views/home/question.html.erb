@@ -23,6 +23,18 @@
     </div>
 </div>
 
+<%# lockArrayに他人が正解した問題番号を格納する %>
+<% @lockArray = []%>
+<% (1..16).to_a.each do |i|%>
+    <% @logs.each do |log|%>
+        <% if log.content.to_i == i%>
+            <% if log.nickname != @nickname%>
+                <% @lockArray.push(i) %>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+
 <%= form_tag("/home/confirm/#{@qNum}/#{@nickname}") do %>
     <input name="selfanswer"  placeholder="答えを入力" autocomplete="off">
     <input type="submit" value="解答" class="btn">
@@ -30,3 +42,11 @@
 
 <div class="solveLog"></div>
 <div class="solveLogBox"></div>
+
+<script>
+    /* lockArrayに格納されている問題番号をLOCKする */
+    var lockArray = '<%== JSON.dump(@lockArray) %>'.replace(/\[/g, "").replace(/\]/g, "").split(',');
+    lockArray.forEach(function(lockNum, i) {
+        $("#LOCK"+lockNum).css("opacity","1");
+    });
+</script>

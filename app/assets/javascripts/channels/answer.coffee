@@ -8,14 +8,15 @@ App.answer = App.cable.subscriptions.create "AnswerChannel",
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
 
-    console.log data.message
-    $('.solveLog').html(data.message)
-    $('.solveLogBox').append('<p>' + data.message + '</p>');
+    console.log data.nickname
+    console.log data.content
+    $('.solveLog').html("最新：" + data.nickname + "がQ" + data.content + "に正解しました")
+    $('.solveLogBox').append('<p>' + data.nickname + "がQ" + data.content + "に正解しました" + '</p>');
 
     # 正解した場所のLOCKが不透明になる
     for i in [1..16]
-      console.log data.message
-      if data.message == i.toString()
+      console.log data.content
+      if data.content == i.toString()
         $('#LOCK'+i.toString()).css(opacity:1);
 
   
@@ -25,4 +26,5 @@ App.answer = App.cable.subscriptions.create "AnswerChannel",
 $ ->
   $(".btn-1").click (e)->
     App.answer.answer()
- 
+
+$('.solveLog').html("テスト：" + @nickname)

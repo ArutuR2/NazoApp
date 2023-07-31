@@ -25,6 +25,7 @@ class HomeController < ApplicationController
   def question
     @qNum = params[:qNum]
     @nickname = params[:nickname]
+    @logs = Log.all
   end
 
   def confirm
@@ -51,10 +52,9 @@ class HomeController < ApplicationController
       "16",]
 
     if @selfanswer == @answersQueue[@qNum.to_i-1]
-      @flag = Log.new(content: @nickname)
+      @flag = Log.new(nickname:@nickname, content:@qNum)
       @flag.save
-      #ActionCable.server.broadcast "answer_channel", message: @nickname+ "がQ" + @qNum + "を正解しました"
-      ActionCable.server.broadcast "answer_channel", message: @qNum
+      ActionCable.server.broadcast "answer_channel", nickname:@nickname, content: @qNum
       redirect_to("/home/menu/" + @nickname)
     else
     end
