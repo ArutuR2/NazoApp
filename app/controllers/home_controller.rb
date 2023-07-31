@@ -53,7 +53,8 @@ class HomeController < ApplicationController
     if @selfanswer == @answersQueue[@qNum.to_i-1]
       @flag = Log.new(content: @nickname)
       @flag.save
-      ActionCable.server.broadcast "answer_channel", message: @nickname+ "がQ" + @qNum + "を正解しました"
+      #ActionCable.server.broadcast "answer_channel", message: @nickname+ "がQ" + @qNum + "を正解しました"
+      ActionCable.server.broadcast "answer_channel", message: @qNum
       redirect_to("/home/menu/" + @nickname)
     else
     end

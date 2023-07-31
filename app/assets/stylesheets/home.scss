@@ -1,3 +1,23 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.Q{
+    position:relative;
+}
+
+.LOCK-grid{
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px;
+	grid-template-rows: 100px 100px 100px 100px;
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+/* LOCKは最初は全部透明 */
+@for $i from 1 through 16 {
+    #LOCK#{$i} {
+        opacity: 0;
+    }
+}
