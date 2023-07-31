@@ -9,6 +9,6 @@ class AnswerChannel < ApplicationCable::Channel
   end
 
   def answer
-    ActionCable.server.broadcast "answer_channel", message: "hoge"
+    ActionCable.server.broadcast "answer_channel", nickname:"fuga", content: "hoge"
   end
 end

@@ -3,6 +3,7 @@
 <% end %>
 
 <% @logs.each do |log|%>
+    <%= log.nickname %>
     <%= log.content %>
     <%= log.created_at %>
 <% end %>
