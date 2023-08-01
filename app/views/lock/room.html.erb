@@ -1,0 +1,53 @@
+<p>残り時間<%= @nickname%></p>
+<div class="timer-container">
+    <div id="second"></div>
+</div>
+<p>問題</p>
+<button id="startBtn">START</button>
+<button id="stopBtn">LOCK</button>
+
+
+<script>
+
+//html.erb -> js
+const nickname = '<%== JSON.dump(@nickname) %>'.replace(/\"/g, "");
+
+//カウントの秒数
+let count = 75;
+
+//変換した分と秒を要素に表示
+second.textContent = `${count}秒`;
+
+//一定時間おきに行いたい関数を宣言
+function countDown() {
+    if(count > 0) {
+        count -= 0.01;
+        second.textContent = `${count.toFixed(2)}秒`;
+    } else {
+        //countが0以下になったら処理を停止させる
+        second.textContent = "0秒";
+        console.log("タイマーが停止しました");
+        clearInterval(countDownTimer);
+    }
+}
+
+// カウントダウン開始
+$('#startBtn').on('click', function() {
+    countDownTimer = setInterval(countDown,10);
+});
+// カウントダウン停止 & ajaxでcountの値をcontrollerに引き渡す
+$('#stopBtn').on('click', function() {
+    clearInterval(countDownTimer);
+
+    $.ajax({
+    url: '/lock/getCount',  
+    type: 'GET',
+    dataType: 'html',
+    async: true,
+    data: {
+        nickname: nickname,
+        count: count.toFixed(2)
+    },
+  });
+});
+</script>

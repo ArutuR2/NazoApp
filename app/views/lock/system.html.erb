@@ -1,0 +1,9 @@
+<%= form_tag("/lock/reset") do %>
+    <input type="submit" value="リセットボタン" name="key">
+<% end %>
+
+<% @logs.each do |log|%>
+    <%= log.nickname %>
+    <%= log.time %>
+    <%= log.created_at %>
+<% end %>

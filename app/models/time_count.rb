@@ -1,0 +1,2 @@
+class TimeCount < ApplicationRecord
+end

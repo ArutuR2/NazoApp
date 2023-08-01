@@ -15,7 +15,6 @@ App.answer = App.cable.subscriptions.create "AnswerChannel",
 
     # 正解した場所のLOCKが不透明になる
     for i in [1..16]
-      console.log data.content
       if data.content == i.toString()
         $('#LOCK'+i.toString()).css(opacity:1);
 
