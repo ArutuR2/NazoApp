@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "lock/room/:nickname" => "lock#room"
   get "lock/getCount" => "lock#getCount"
   get "lock/system" => "lock#system"
+  post "lock/judge" => "lock#judge"
   post "lock/nickname" => "lock#nickname"
   post "lock/reset" => "lock#reset"
 

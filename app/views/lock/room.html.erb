@@ -6,14 +6,17 @@
 <button id="startBtn">START</button>
 <button id="stopBtn">LOCK</button>
 
+<div id="test"></div>
+
+<div id="point_<%="#{@nickname}"%>"></div>
 
 <script>
-
 //html.erb -> js
 const nickname = '<%== JSON.dump(@nickname) %>'.replace(/\"/g, "");
 
 //カウントの秒数
 let count = 75;
+var countDownTimer
 
 //変換した分と秒を要素に表示
 second.textContent = `${count}秒`;
@@ -34,10 +37,12 @@ function countDown() {
 // カウントダウン開始
 $('#startBtn').on('click', function() {
     countDownTimer = setInterval(countDown,10);
+    console.log(countDownTimer)
 });
 // カウントダウン停止 & ajaxでcountの値をcontrollerに引き渡す
 $('#stopBtn').on('click', function() {
     clearInterval(countDownTimer);
+    console.log(countDownTimer)
 
     $.ajax({
     url: '/lock/getCount',  
